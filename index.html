@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="8x8 Puzzle">
+    <meta name="author" content="Christopher Mitchell">
+    <meta charset="UTF-8">
+    <title>The Knight's Tour</title>
+    <link rel="stylesheet" href="main.css">
+
+<script>
+
+function changeBoxes(index) {
+    var a = [index, index + 1, index - 1, index + 20, index - 20];
+    for(c = 0; c < 5; c++){
+        valid = true;
+        switch(a[c]){
+        case 0:
+            var box = document.getElementById("box0");
+            break;
+        case 1:
+            var box = document.getElementById("box1");
+            break;
+        case 2:
+            var box = document.getElementById("box2");
+            break;
+        case 3:
+            var box = document.getElementById("box3");
+            break;
+        case 4:
+            var box = document.getElementById("box4");
+            break;
+        case 5:
+            var box = document.getElementById("box5");
+            break;
+        case 6:
+            var box = document.getElementById("box6");
+            break;
+        case 7:
+            var box = document.getElementById("box7");
+            break;
+        case 20:
+            var box = document.getElementById("box8");
+            break;
+        case 21:
+            var box = document.getElementById("box9");
+            break;
+        case 22:
+            var box = document.getElementById("box10");
+            break;
+        case 23:
+            var box = document.getElementById("box11");
+            break;
+        case 24:
+            var box = document.getElementById("box12");
+            break;
+        case 25:
+            var box = document.getElementById("box13");
+            break;
+        case 26:
+            var box = document.getElementById("box14");
+            break;
+        case 27:
+            var box = document.getElementById("box15");
+            break;
+        case 40:
+            var box = document.getElementById("box16");
+            break;
+        case 41:
+            var box = document.getElementById("box17");
+            break;
+        case 42:
+            var box = document.getElementById("box18");
+            break;
+        case 43:
+            var box = document.getElementById("box19");
+            break;
+        case 44:
+            var box = document.getElementById("box20");
+            break;
+        case 45:
+            var box = document.getElementById("box21");
+            break;
+        case 46:
+            var box = document.getElementById("box22");
+            break;
+        case 47:
+            var box = document.getElementById("box23");
+            break;
+        case 60:
+            var box = document.getElementById("box24");
+            break;
+        case 61:
+            var box = document.getElementById("box25");
+            break;
+        case 62:
+            var box = document.getElementById("box26");
+            break;
+        case 63:
+            var box = document.getElementById("box27");
+            break;
+        case 64:
+            var box = document.getElementById("box28");
+            break;
+        case 65:
+            var box = document.getElementById("box29");
+            break;
+        case 66:
+            var box = document.getElementById("box30");
+            break;
+        case 67:
+            var box = document.getElementById("box31");
+            break;
+        case 80:
+            var box = document.getElementById("box32");
+            break;
+        case 81:
+            var box = document.getElementById("box33");
+            break;
+        case 82:
+            var box = document.getElementById("box34");
+            break;
+        case 83:
+            var box = document.getElementById("box35");
+            break;
+        case 84:
+            var box = document.getElementById("box36");
+            break;
+        case 85:
+            var box = document.getElementById("box37");
+            break;
+        case 86:
+            var box = document.getElementById("box38");
+            break;
+        case 87:
+            var box = document.getElementById("box39");
+            break;
+        case 100:
+            var box = document.getElementById("box40");
+            break;
+        case 101:
+            var box = document.getElementById("box41");
+            break;
+        case 102:
+            var box = document.getElementById("box42");
+            break;
+        case 103:
+            var box = document.getElementById("box43");
+            break;
+        case 104:
+            var box = document.getElementById("box44");
+            break;
+        case 105:
+            var box = document.getElementById("box45");
+            break;
+        case 106:
+            var box = document.getElementById("box46");
+            break;
+        case 107:
+            var box = document.getElementById("box47");
+            break;
+        case 120:
+            var box = document.getElementById("box48");
+            break;
+        case 121:
+            var box = document.getElementById("box49");
+            break;
+        case 122:
+            var box = document.getElementById("box50");
+            break;
+        case 123:
+            var box = document.getElementById("box51");
+            break;
+        case 124:
+            var box = document.getElementById("box52");
+            break;
+        case 125:
+            var box = document.getElementById("box53");
+            break;
+        case 126:
+            var box = document.getElementById("box54");
+            break;
+        case 127:
+            var box = document.getElementById("box55");
+            break;
+        case 140:
+            var box = document.getElementById("box56");
+            break;
+        case 141:
+            var box = document.getElementById("box57");
+            break;
+        case 142:
+            var box = document.getElementById("box58");
+            break;
+        case 143:
+            var box = document.getElementById("box59");
+            break;
+        case 144:
+            var box = document.getElementById("box60");
+            break;
+        case 145:
+            var box = document.getElementById("box61");
+            break;
+        case 146:
+            var box = document.getElementById("box62");
+            break;
+        case 147:
+            var box = document.getElementById("box63");
+            break;
+        default:
+            valid = false;
+            break;   
+    }
+        if(valid == true){
+            if(box.style.background == "black"){
+                box.style.background = "red";
+            } else {
+                box.style.background = "black";
+            }
+        }
+    }
+    var moves = document.getElementById("numBox");
+    moves.innerHTML = (parseInt(moves.innerHTML) + 1).toString();
+}
+
+function checkSolve(){
+
+    total = 0;//represents the total number of solved squares
+    //gets the total number of solved squares so far
+    var moves = document.getElementById("numBox");
+    //gets the total number of moves so far
+    var min = document.getElementById("moves");
+    //This for loop runs through every box, checks its color against the background color (checks for correctness), and finds the total number of solved boxes.
+    for(c = 0; c < 64; c++){
+        if(document.body.style.background == "black"){
+            if(document.getElementById("box"+c.toString()).style.background == "red"){
+                total++;
+            }
+        } else {
+            if(document.getElementById("box"+c.toString()).style.background == "black"){
+                total++;
+            }
+        }
+    }
+    document.getElementById("sumBox").innerHTML = total.toString();
+    //This if statement is true if all 64 boxes are correct, and will change the color of the background accordingly if they are.
+    if(total == 64){
+        if(document.body.style.background == "black"){
+            document.getElementById("grid").style.background = "red";
+            document.body.style.background = "red";
+        } else {
+            document.getElementById("grid").style.background = "black";
+            document.body.style.background = "black";
+        }
+        if(min.innerHTML == "0"){
+            document.getElementById("challenge").innerHTML = "If you can solve the entire thing in less than 40 moves, then I solute you...";
+        }
+        //Check to see if this solve had fewer moves than the previous fewest moves and adjust screen accordingly
+        if((parseInt(moves.innerHTML) < parseInt(min.innerHTML)) || min.innerHTML == "0"){
+            min.innerHTML = (parseInt(moves.innerHTML));
+        }
+        moves.innerHTML = "0";
+    }
+}
+    
+/*function gradient(index){
+    var c=document.getElementById("box" + index.toString());
+    var ctx=c.getContext("2d");
+    var my_gradient=ctx.createLinearGradient(0,0,170,0);
+    my_gradient.addColorStop(0,"black");
+    my_gradient.addColorStop(0.5,"red");
+    my_gradient.addColorStop(1,"black");
+    ctx.fillStyle=my_gradient;
+    ctx.fillRect(0,0,00,00);
+    //TO "TURN OFF" THE GRADIENT, set the above 500s to be 0s. If you want to have the gradient (for whatever reason...), set the third and fourth arguments of fillRect to be 500s 
+}*/
+
+</script>
+    
+</head>
+<body style="background:black;">
+    
+    <!--<span>
+    <p id="numBox" style="font-size:64px;border:4px solid black;max-width:50px;min-width:50px;text-align:center;float:left;">
+        X
+    </p>
+    <p id="sumBox" style="font-size:64px;border:4px solid black;max-width:50px;min-width:50px;text-align:center;float:left;">
+        X
+    </p>
+    </span><br>-->
+    <div id="wrapper">
+    <div id="grid" style="float:left;" onclick="checkSolve();">
+        <span class="eight r0">
+            <canvas class="box c0" id="box0" onclick="changeBoxes(0)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box1"  onclick="changeBoxes(1)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box2" onclick="changeBoxes(2)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box3" onclick="changeBoxes(3)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box4"  onclick="changeBoxes(4)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box5" onclick="changeBoxes(5)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box6" onclick="changeBoxes(6)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box7"  onclick="changeBoxes(7)" style="background:black;"></canvas>
+        </span><br><span class="eight r1">
+            <canvas class="box c0" id="box8" onclick="changeBoxes(20)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box9"  onclick="changeBoxes(21)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box10" onclick="changeBoxes(22)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box11" onclick="changeBoxes(23)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box12"  onclick="changeBoxes(24)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box13" onclick="changeBoxes(25)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box14" onclick="changeBoxes(26)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box15"  onclick="changeBoxes(27)" style="background:black;"></canvas>
+        </span><br><span class="eight r2">
+            <canvas class="box c0" id="box16" onclick="changeBoxes(40)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box17"  onclick="changeBoxes(41)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box18" onclick="changeBoxes(42)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box19" onclick="changeBoxes(43)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box20"  onclick="changeBoxes(44)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box21" onclick="changeBoxes(45)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box22" onclick="changeBoxes(46)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box23"  onclick="changeBoxes(47)" style="background:black;"></canvas>
+        </span><br><span class="eight r3">
+            <canvas class="box c0" id="box24" onclick="changeBoxes(60)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box25"  onclick="changeBoxes(61)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box26" onclick="changeBoxes(62)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box27" onclick="changeBoxes(63)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box28"  onclick="changeBoxes(64)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box29" onclick="changeBoxes(65)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box30" onclick="changeBoxes(66)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box31"  onclick="changeBoxes(67)" style="background:black;"></canvas>
+        </span><br><span class="eight r4">
+            <canvas class="box c0" id="box32" onclick="changeBoxes(80)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box33"  onclick="changeBoxes(81)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box34" onclick="changeBoxes(82)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box35" onclick="changeBoxes(83)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box36"  onclick="changeBoxes(84)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box37" onclick="changeBoxes(85)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box38" onclick="changeBoxes(86)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box39"  onclick="changeBoxes(87)" style="background:black;"></canvas>
+        </span><br><span class="eight r5">
+            <canvas class="box c0" id="box40" onclick="changeBoxes(100)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box41"  onclick="changeBoxes(101)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box42" onclick="changeBoxes(102)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box43" onclick="changeBoxes(103)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box44"  onclick="changeBoxes(104)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box45" onclick="changeBoxes(105)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box46" onclick="changeBoxes(106)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box47"  onclick="changeBoxes(107)" style="background:black;"></canvas>
+        </span><br><span class="eight r6">
+            <canvas class="box c0" id="box48" onclick="changeBoxes(120)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box49"  onclick="changeBoxes(121)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box50" onclick="changeBoxes(122)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box51" onclick="changeBoxes(123)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box52"  onclick="changeBoxes(124)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box53" onclick="changeBoxes(125)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box54" onclick="changeBoxes(126)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box55"  onclick="changeBoxes(127)" style="background:black;"></canvas>
+        </span><br><span class="eight r7">
+            <canvas class="box c0" id="box56" onclick="changeBoxes(140)" style="background:black;"></canvas>
+            <canvas class="box c1" id="box57"  onclick="changeBoxes(141)" style="background:black;"></canvas>
+            <canvas class="box c2" id="box58" onclick="changeBoxes(142)" style="background:black;"></canvas>
+            <canvas class="box c3" id="box59" onclick="changeBoxes(143)" style="background:black;"></canvas>
+            <canvas class="box c4" id="box60"  onclick="changeBoxes(144)" style="background:black;"></canvas>
+            <canvas class="box c5" id="box61" onclick="changeBoxes(145)" style="background:black;"></canvas>
+            <canvas class="box c6" id="box62" onclick="changeBoxes(146)" style="background:black;"></canvas>
+            <canvas class="box c7" id="box63"  onclick="changeBoxes(147)" style="background:black;"></canvas>
+        </span>
+    </div>
+    
+    <!--- This part's formatting needs to be fixed --->
+        
+    <span class="vertical">
+        <span style="color:white;font-size:44px;">LEAST MOVES TO SOLVE:</span>
+        <span id="moves" style="color:white;font-size:44px;">0</span>
+    </span>
+    
+    </div>
+        
+    <br><br><br>
+    <div id="numBoxes">
+    <p id="numBox" class="numBox">
+        0
+    </p>
+    <p id="sumBox" class="numBox">
+        0
+    </p>
+    </div>
+    
+    <p id="challenge" style="font-size:24px;float:left;text-align:center;max-width:600px;color:white;"></p>
+    
+    
+</body>
+</html>
