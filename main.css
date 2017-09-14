@@ -9,21 +9,8 @@
     display:inline-block;
     bottom:0;
     width:auto;
-    height:50px;
-}
-
-#numBoxes {
-    width: 550px;
-    display:inline-block;
-}
-
-#wrapper {
-    width: 604px;
-    /*display:inline-block;*/
-}
-
-#grid {
-    width:552px;
+    height:10px;
+    text-align:center;
 }
 
 .numBox {
@@ -35,86 +22,15 @@
     min-width: 236px;
     min-height: 72px;
     text-align: center;
-    display:inline-block;
+    float: left;
     margin: 15px;
 }
 
 .box {
     border: 3px solid white;
-    box-shadow: 0px 0px 15px 2px white;
     width: 50px;
     height: 50px;
     margin: 5px;
-    
-    transition: border 0.6s;
-}
-
-.box:hover {
-    border: 3px solid red;
-}
-
-.r0 .box {
-    height: 20px;
-}
-
-.r1 .box {
-    height: 30px;
-}
-
-.r2 .box {
-    height: 50px;
-}
-
-.r3 .box {
-    height: 100px;
-}
-
-.r4 .box {
-    height: 100px;
-}
-
-.r5 .box {
-    height: 50px;
-}
-
-.r6 .box {
-    height: 30px;
-}
-
-.r7 .box {
-    height: 20px;
-}
-
-.c0 {
-    width: 20px;
-}
-
-.c1 {
-    width: 30px;
-}
-
-.c2 {
-    width: 50px;
-}
-
-.c3 {
-    width: 100px;
-}
-
-.c4 {
-    width: 100px;
-}
-
-.c5 {
-    width: 50px;
-}
-
-.c6 {
-    width: 30px;
-}
-
-.c7 {
-    width: 20px;
 }
 
 .eight {
