@@ -6,9 +6,10 @@
     -ms-transform:rotate(0deg);
     transform: rotate(0deg);
     white-space:nowrap;
-    display:inline-block;
-    bottom:0;
+    /*display:inline-block;*/
+    /*bottom:0;*/
     width:auto;
+    float: left;
     height:10px;
 }
 
@@ -39,9 +40,13 @@
     max-width: 1000px;
 }
 
+#grid {
+    float: left;
+}
+
 #wrapper {
     padding-top: 100px;
-    width: 610px;
+    width: 640px;
     /*display:inline-block;*/
     margin: 0 auto;
 }
